@@ -22,6 +22,7 @@ public class AuthorService {
     public Author saveAuthor(Author body){
         Random rndm = new Random();
         body.setId(rndm.nextInt(1,1000));
+        body.setAvatar("https://ui-avatars.com/api/?name="+body.getName()+"+"+body.getSurname());
         this.authorList.add(body);
         return body;
     }
