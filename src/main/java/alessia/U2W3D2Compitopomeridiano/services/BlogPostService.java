@@ -47,14 +47,8 @@ public class BlogPostService {
     }
 
     public void findByIdAndDelete(int id){
-        Iterator<BlogPost> iterator = this.blogPostList.iterator();
 
-        while (iterator.hasNext()){
-            BlogPost current = iterator.next();
-            if (current.getId()== id){
-                iterator.remove();
-            }
-        }
+        this.blogPostList.removeIf(current -> current.getId() == id);
     }
 
 }

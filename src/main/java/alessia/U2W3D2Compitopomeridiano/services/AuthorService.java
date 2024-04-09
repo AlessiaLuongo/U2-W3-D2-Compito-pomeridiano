@@ -46,14 +46,8 @@ public class AuthorService {
     }
 
     public void findAuthorByIdAndDelete(int id){
-        Iterator<Author> iterator = this.authorList.iterator();
 
-        while (iterator.hasNext()){
-            Author current = iterator.next();
-            if (current.getId()== id){
-                iterator.remove();
-            }
-        }
+        this.authorList.removeIf(current -> current.getId() == id);
     }
 
 
