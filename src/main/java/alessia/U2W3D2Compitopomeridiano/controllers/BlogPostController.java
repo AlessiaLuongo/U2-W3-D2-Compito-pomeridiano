@@ -26,13 +26,20 @@ public class BlogPostController {
         return this.blogPostService.saveBlogPost(body);
     }
 
-    @PutMapping("/put-blog-post")
-    public String putBlogPost(){
-        return "PUT";
+    @GetMapping("/{blogPostId}")
+    private BlogPost getSingleBlogPost(@PathVariable int blogPostId){
+    return this.blogPostService.findById(blogPostId);
     }
-    @DeleteMapping("/put-blog-post")
-    public String deleteBlogPost(){
-        return "DELETE";
+
+    @PutMapping("/{blogPostId}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    private BlogPost findSinglePostAndUpdate(@PathVariable int blogPostId, @RequestBody BlogPost body){
+        return this.blogPostService.findByIdAndUpdate(blogPostId, body);
+    }
+    @DeleteMapping("/{blogPostId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    private void deleteBlogPost(@PathVariable int blogPostId){
+        this.blogPostService.findByIdAndDelete(blogPostId);
     }
 
 }
